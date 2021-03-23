@@ -26,10 +26,10 @@ func (p *Point) Lng() float64 {
 // Returns the distance in Km
 func (p *Point) GetDistance(p2 *Point) float64 {
 	// Formula taken from http://www.movable-type.co.uk/scripts/latlong.html
-	φ1 := p.Lat() * math.Pi / 180 // φ, λ in radians
-	φ2 := p2.Lat() * math.Pi / 180
-	Δφ := (p2.Lat() - p.Lat()) * math.Pi / 180
-	Δλ := (p2.Lng() - p.Lng()) * math.Pi / 180
+	φ1 := convertToRadians(p.Lat()) // φ, λ in radians
+	φ2 := convertToRadians(p2.Lat())
+	Δφ := convertToRadians(p2.Lat() - p.Lat())
+	Δλ := convertToRadians(p2.Lng() - p.Lng())
 
 	a := math.Sin(Δφ/2)*math.Sin(Δφ/2) +
 		math.Cos(φ1)*math.Cos(φ2)*
@@ -38,6 +38,10 @@ func (p *Point) GetDistance(p2 *Point) float64 {
 	c := 2 * math.Atan2(math.Sqrt(a), math.Sqrt(1-a))
 
 	return roundToFirstDecimalPlace(EARTH_RADIUS * c)
+}
+
+func convertToRadians(c float64) float64 {
+	return c * math.Pi / 180
 }
 
 func roundToFirstDecimalPlace(n float64) float64 {
