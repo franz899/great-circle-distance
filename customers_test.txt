@@ -1,0 +1,4 @@
+{ "user_id": 1, "name": "New York", "latitude": "40.6976701", "longitude": "-74.2598749" }
+{ "user_id": 2, "name": "Philadelphia", "latitude": "40.0026767", "longitude": "-75.2581147" }
+{ "user_id": 3, "name": "London", "latitude": "51.5287352", "longitude": "-0.381763" }
+{ "user_id": 4, "name": "Liverpool", "latitude": "53.4123001", "longitude": "-3.0561377" }
