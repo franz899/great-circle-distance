@@ -18,8 +18,10 @@ func TestSortByID(t *testing.T) {
 		{4, "Liverpool", 53.4123001, -3.0561377},
 	}
 	SortByID(&arg)
-	if arg[0] != want[0] {
-		t.Error()
+	for i, e := range arg {
+		if e != want[i] {
+			t.Errorf(`SortByID[%v] = %v; want %v`, i, e, want[i])
+		}
 	}
 }
 
